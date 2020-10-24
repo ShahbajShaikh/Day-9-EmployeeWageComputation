@@ -141,3 +141,40 @@ Totalsalary=$(( $empWagePerHr * $empHrs ))
 echo $Totalsalary
 
 
+function workHour() {
+empWagePerHr=20
+empFullTime=0
+empPartTime=1
+daysPerMonth=20
+Total_Max_hr=100
+empHrs=0
+
+for (( i=1; i<=daysPerMonth; i++ ))
+do
+        random=$((RANDOM%2))
+        case $random in
+                $empFullTime)
+                        empHrs=$(($empHrs+12));
+                        ;;
+
+                $empPartTime)
+                        emphrs=$(($empHrs+8));
+                        ;;
+
+        esac
+        if [ $empHrs -ge $Total_Max_hr ]
+        then
+                empHrs=100
+                break;
+        fi
+
+done
+echo $empHrs
+}
+empWagePerHr=20
+
+values=$(workHour)
+echo "WorkHours="$values
+Totalsalary=$(( $empWagePerHr * $values ))
+echo $Totalsalary
+
