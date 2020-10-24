@@ -68,3 +68,35 @@ case $random in
 
 salary=$(( $empWagePerHr * $empHr ))
 
+empWagePerHr=20
+empFullTime=0
+empPartTime=1
+
+daysPerMonth=20
+
+for (( i=1; i<=$daysPerMonth; i++  ))
+do
+        random=$((RANDOM%3))
+
+        case $random in
+                $empFullTime)
+                        echo "Employee is Full time Present"
+                        empHr=8;
+                        ;;
+
+                $empPartTime)
+                        echo "Employee is Part time Present";
+                        empHr=4;
+                        ;;
+
+                *)
+                        echo "Employee Absent";
+                        empHr=0;
+                        ;;
+        esac
+
+done
+salary=$(( $empWagePerHr * $empHr ))
+echo $salary
+totalSalary=$(( $salary * $daysPerMonth ))
+echo $totalsalary
