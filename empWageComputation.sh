@@ -42,3 +42,29 @@ then
 
 salary=$(( $empWagePerHr * $empHr ))
 echo $salary
+
+empWagePerHr=20
+empFullTime=1
+empPartTime=2
+
+random=$((RANDOM%3))
+
+case $random in
+        $empFullTime)
+                echo "Employee is present and doing fulltime."
+                empHr=12;
+                ;;
+
+        $empPartTime)
+                echo "Employee is present and doing part time."
+                empHr=8;
+                ;;
+
+        *)
+                echo "EMployee Absent"
+                empHr=0;
+                ;;
+        esac
+
+salary=$(( $empWagePerHr * $empHr ))
+
