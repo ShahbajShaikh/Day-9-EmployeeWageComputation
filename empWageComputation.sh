@@ -100,3 +100,44 @@ salary=$(( $empWagePerHr * $empHr ))
 echo $salary
 totalSalary=$(( $salary * $daysPerMonth ))
 echo $totalsalary
+
+
+empWagePerHr=20
+empFullTime=0
+empPartTime=1
+daysPerMonth=20
+Total_Max_hr=100
+empHrs=0
+
+for (( i=1; i<=daysPerMonth; i++ ))
+do
+        random=$((RANDOM%3))
+        case $random in
+                $empFullTime)
+                        echo "Employee is full time present."
+                        empHrs=$(($empHrs+12));
+                        ;;
+
+                $empPartTime)
+                        echo "Employee is part time present."
+                        emphrs=$(($empHrs+8));
+                        ;;
+                *)
+                        echo "Employee is absent."
+                        ;;
+        esac
+        echo $empHrs
+        echo "Days="$i
+        if [ $empHrs -ge $Total_Max_hr ]
+        then
+                empHrs=100
+                break;
+        fi
+
+done
+echo $empHrs
+
+Totalsalary=$(( $empWagePerHr * $empHrs ))
+echo $Totalsalary
+
+
